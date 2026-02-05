@@ -2,6 +2,7 @@ USE sakila;
 
 
 -- Create a view
+CREATE VIEW customer_rental_summary
 SELECT 
 COUNT(re.rental_id) as rental_count,
 re.customer_id,
@@ -70,7 +71,7 @@ last_name,
 email,
 rental_count,
 total_paid,
-ROUND (AVG((total_paid) / (rental_count)), 2) as avg_payment_per_rental
+ROUND (((total_paid) / (rental_count)), 2) as avg_payment_per_rental
 FROM cte_view
 GROUP BY 
 customer_id,
